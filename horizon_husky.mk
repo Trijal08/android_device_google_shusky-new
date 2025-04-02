@@ -6,7 +6,7 @@
 
 # Inherit some common stuff
 TARGET_DISABLE_EPPE := true
-ROM_VENDOR := lineage
+ROM_VENDOR := horizon
 ifdef ROM_VENDOR
 $(call inherit-product, vendor/$(ROM_VENDOR)/config/common_full_phone.mk)
 else
@@ -30,9 +30,51 @@ else
 PRODUCT_NAME := lineage_$(DEVICE_CODENAME)
 endif
 
+# UDFPS support
+TARGET_HAS_UDFPS := true
+EXTRA_UDFPS_ANIMATIONS := true
+
+# Blur
+TARGET_ENABLE_BLUR := true
+
+# Lawnchair (Pixel Launcher by default)
+TARGET_INCLUDE_PIXEL_LAUNCHER := true
+TARGET_DEFAULT_PIXEL_LAUNCHER := true
+TARGET_PREBUILT_LAWNCHAIR_LAUNCHER := true
+
+# Exclude Aperture camera app
+PRODUCT_NO_CAMERA := true
+
+# Custom package installer
+TARGET_USE_CUSTOM_PACKAGE_INSTALLER := true
+
+# Live wallpapers
+TARGET_INCLUDE_LIVE_WALLPAPERS := true
+
+# Quick tap
+TARGET_SUPPORTS_QUICK_TAP  := true
+
+# Now Playing
+TARGET_SUPPORTS_NOW_PLAYING := true
+
+# Clear Calling
+TARGET_SUPPORTS_CLEAR_CALLING := true
+
+# Call Recording Support
+TARGET_SUPPORTS_CALL_RECORDING := true
+
+# GMS
+WITH_GMS := true
+
+# HorizonDroid Flags
+HORIZON_BUILD_TYPE := UNOFFICIAL
+HORIZON_MAINTAINER := GamerBoy1234294
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2992
 TARGET_SCREEN_WIDTH := 1344
+scr_resolution := 1440
+TARGET_BOOT_ANIMATION_RES := 1440
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="husky-user 15 BP1A.250305.019 13003188 release-keys" \
