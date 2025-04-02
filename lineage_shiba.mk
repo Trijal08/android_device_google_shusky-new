@@ -6,7 +6,12 @@
 
 # Inherit some common stuff
 TARGET_DISABLE_EPPE := true
+ROM_VENDOR := lineage
+ifdef ROM_VENDOR
+$(call inherit-product, vendor/$(ROM_VENDOR)/config/common_full_phone.mk)
+else
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+endif
 
 # Inherit device configuration
 DEVICE_CODENAME := shiba
@@ -19,7 +24,11 @@ $(call inherit-product, $(DEVICE_PATH)/$(DEVICE_CODENAME)/device-lineage.mk)
 # Device identifier. This must come after all inclusions
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Pixel 8
+ifdef ROM_VENDOR
+PRODUCT_NAME := $(ROM_VENDOR)_$(DEVICE_CODENAME)
+else
 PRODUCT_NAME := lineage_$(DEVICE_CODENAME)
+endif
 
 AXION_CAMERA_REAR_INFO := 50,12
 AXION_CAMERA_FRONT_INFO := 10.5
